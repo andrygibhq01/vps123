@@ -215,24 +215,24 @@ create_new_vm() {
     done
 
     while true; do
-        read -p "$(print_status "INPUT" "Disk size (default: 120G): ")" DISK_SIZE
-        DISK_SIZE="${DISK_SIZE:-120G}"
+        read -p "$(print_status "INPUT" "Disk size (default: 64G): ")" DISK_SIZE
+        DISK_SIZE="${DISK_SIZE:-64G}"
         if validate_input "size" "$DISK_SIZE"; then
             break
         fi
     done
 
     while true; do
-        read -p "$(print_status "INPUT" "Memory in MB (default: 32768): ")" MEMORY
-        MEMORY="${MEMORY:-32768}"
+        read -p "$(print_status "INPUT" "Memory in MB (default: 12288): ")" MEMORY
+        MEMORY="${MEMORY:-12288}"
         if validate_input "number" "$MEMORY"; then
             break
         fi
     done
 
     while true; do
-        read -p "$(print_status "INPUT" "Number of CPUs (default: 7): ")" CPUS
-        CPUS="${CPUS:-7}"
+        read -p "$(print_status "INPUT" "Number of CPUs (default: 4): ")" CPUS
+        CPUS="${CPUS:-4}"
         if validate_input "number" "$CPUS"; then
             break
         fi
