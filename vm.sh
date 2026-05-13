@@ -231,8 +231,8 @@ create_new_vm() {
     done
 
     while true; do
-        read -p "$(print_status "INPUT" "Number of CPUs (default: 6): ")" CPUS
-        CPUS="${CPUS:-6}"
+        read -p "$(print_status "INPUT" "Number of CPUs (default: 4): ")" CPUS
+        CPUS="${CPUS:-4}"
         if validate_input "number" "$CPUS"; then
             break
         fi
